@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<fstream>
 using namespace std;
 
 class shop {
@@ -214,7 +215,8 @@ m:
 	input.open("pdt_list.txt", ios::in);
 	if (!input) {
 		input.open("pdt_list.txt", ios::app | ios::out);
-		input << " " << pdt_code << ", " << pdt_name << ", " << pdt_price << ", " << dis << "." << endl;
+		input << " " << pdt_code << " " << pdt_name << " " << pdt_price << " " << dis << endl;
+		input.close();
 	}
 	else {
 		input >> k >> s >> x >> y;
@@ -525,7 +527,12 @@ m:
 }
 
 int main() {
+// #ifndef tejas
+// 	freopen("input.txt", "r", stdin);
+// 	freopen("output.txt", "w", stdout);
+// #endif
 	shop s;
 	s.menu();
+
 	return 0;
 }
