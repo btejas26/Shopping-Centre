@@ -228,9 +228,9 @@ m:
 		}
 		input.close();
 	}
-	if (token == 1) {
+	if (token == 1)
 		goto m;
-	}
+
 	else {
 		input.open("pdt_list.txt", ios::app | ios::out);
 		input << " " << pdt_code << " " << pdt_name << " " << pdt_price << " " << dis << endl;
@@ -303,6 +303,7 @@ void shop::modify_pdt() {
 				cin >> x;
 				cout << "\t\t\t\t|   Enter the Discount on the Product                 |\n";
 				cin >> y;
+				input1 << " " << k << " " << s << " " << x << " " << y << endl;
 				cout << "\t\t\t\t|_____________________________________________________|\n";
 				cout << "\t\t\t\t|_____________________________________________________|\n";
 				cout << "\t\t\t\t|                  Shopping Bazaar Menu               |\n";
@@ -315,6 +316,7 @@ void shop::modify_pdt() {
 				cout << "\t\t\t\t|                                              	   |\n";
 				cout << "\t\t\t\t|_____________________________________________________|\n";
 				cout << "\t\t\t\t|_____________________________________________________|\n";
+				token++;
 			}
 			else {
 				input1 << " " << pdt_code << " " << pdt_name << " " << dis << endl;
@@ -430,8 +432,9 @@ void shop::list() {
 	cout << "\t\t\t\t|_____________________________________________________|\n";
 	cout << "\t\t\t\t|_____________________________________________________|\n";
 	cout << "\t\t\t\t|Pdt_No.\tPdt_Name\tPdt_Price                         |\n";
+	input >> pdt_code >> pdt_name >> pdt_price >> dis;
 	while (!input.eof()) {
-		cout << pdt_code << "\t" << pdt_name << "\t" << pdt_price << endl;
+		cout << "\t\t\t\t|" << pdt_code << "\t\t " << pdt_name << "\t\t" << pdt_price << endl;
 		input >> pdt_code >> pdt_name >> pdt_price >> dis;
 	}
 	input.close();
@@ -452,7 +455,7 @@ void shop::receipt() {
 	cout << "\t\t\t\t|   			            Receipt                    |\n";
 	cout << "\t\t\t\t|_____________________________________________________|\n";
 	cout << "\t\t\t\t|_____________________________________________________|\n";
-	input.open("pdt_list", ios::in);
+	input.open("pdt_list.txt", ios::in);
 	if (!input) {
 		cout << "\t\t\t\t|_____________________________________________________|\n";
 		cout << "\t\t\t\t|                  Shopping Bazaar Menu               |\n";
@@ -472,6 +475,7 @@ void shop::receipt() {
 		cout << "\t\t\t\t|_____________________________________________________|\n";
 		do {
 m:
+
 			cout << "Enter Product Code: ";
 			cin >> codes[k];
 			cout << "Enter the Product quantity: ";
@@ -512,10 +516,10 @@ m:
 			input >> pdt_code >> pdt_name >> pdt_price >> dis;
 			while (!input.eof()) {
 				if (pdt_code == codes[i]) {
-					amt = pdt_price * codes[i];
+					amt = pdt_price * quantity[i];
 					dis = amt - (amt * dis / 100);
 					total = total + dis;
-					cout << "\n" << pdt_code << "\t" << pdt_name << "\t" << codes[i] << "\t" << pdt_price << "\t" << amt << "\t" << dis;
+					cout << "\n" << pdt_code << "\t  " << pdt_name << "\t\t   " << quantity[i] << "\t\t" << pdt_price << "\t\t\t" << amt << "\t\t\t" << dis;
 				}
 				input >> pdt_code >> pdt_name >> pdt_price >> dis;
 			}
